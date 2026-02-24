@@ -655,23 +655,23 @@
 
         // Start Camera
         async function startCamera() {
-            try {
-                stream = await navigator.mediaDevices.getUserMedia({
-    video: {
-        facingMode: { ideal: "environment" }
-    },
-    audio: false
-});
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({
+            video: {
+                facingMode: { ideal: "environment" }
+            },
+            audio: false
+        });
 
-                const video = document.getElementById('video');
-                video.srcObject = stream;
+        const video = document.getElementById('video');
+        video.srcObject = stream;
 
-           // document.getElementById('startScreen').classList.add('hidden');
-            } catch (err) {
-                alert('Could not access camera. Please ensure you have given permission.');
-                console.error(err);
-            }
-        }
+        document.getElementById('startScreen').style.display = "none";
+
+    } catch (err) {
+        alert("Error: " + err.name);
+    }
+}
 
         // Set Mode
         function setMode(mode) {
